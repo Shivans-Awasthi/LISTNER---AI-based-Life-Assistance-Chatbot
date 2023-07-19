@@ -1,8 +1,5 @@
 from flask import Flask, request, jsonify
 
-import requests
-
-
 
 app = Flask(__name__)
 @app.route('/chat', methods=['POST'])
@@ -21,6 +18,10 @@ def process_message(message):
     # You can use any NLP or machine learning libraries, such as spaCy, NLTK, or TensorFlow
     # For simplicity, let's just echo the user's message
     #  as the response
+    
+
+
+
 
     print("Request recieved!!")
 
