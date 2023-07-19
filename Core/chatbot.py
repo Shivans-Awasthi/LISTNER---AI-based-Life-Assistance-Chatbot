@@ -11,6 +11,10 @@ def chat():
     response = process_message(message)
     return jsonify({'response': response})
 
+@app.route('/')
+def home():
+	return "Hello! this is the main page <h1>HELLO</h1> "
+
 
 def process_message(message):
     # Add your AI chatbot logic here
