@@ -23,8 +23,8 @@ def process_message(message):
     # You can use any NLP or machine learning libraries, such as spaCy, NLTK, or TensorFlow
     # For simplicity, let's just echo the user's message
     #  as the response
-    botmessage = message + "hello ooooo"
-    print(botmessage)
+    botmessage = message + "hello"
+
     return botmessage
 
 
