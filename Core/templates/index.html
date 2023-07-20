@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <link rel="stylesheet" href='./static/css/style.css'>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:300,400' rel='stylesheet' type='text/css'>
+    
+
+</head>
+
+<body>
+ <center>
+    <br>
+    <h1 class="Title">LISTNER - An AI Chatbot</h1>
+    <form class="dialog" method="post" action="http://localhost:5000/chat">
+        <br>
+        <div class="Wrapper">
+            <div class="Input">
+              <input type="text" name="message" class="Input-text" placeholder="How can I help you?">
+              <label for="Input" class="Input-label">How can I help you?</label>
+            </div>
+          </div>
+          <!-- <input type="text" name="message" class="Input-text" placeholder="How can I help you?"></input> -->
+        <br>
+        <button class="button-78" type="submit">Submit</button>
+
+    </form>
+
+    <br>
+    <div ng-app="myApp">
+    <div ng-controller="AppCtrl" align="center">
+    <textarea id="TextArea" ng-model="loremIpsum" ng-keyup="autoExpand($event)" placeholder="Chatbot says" >{{result}}</textarea>        
+    </div>
+    </div>
+
+</center>
+
+</body>
+</html>
+
+

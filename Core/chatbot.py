@@ -1,16 +1,21 @@
 from flask import Flask, request, jsonify
+from flask import Flask, render_template, request, url_for, flash, redirect
 
+...
 
 app = Flask(__name__)
-@app.route('/chat', methods=['POST'])
-def chat():
-    message = request.json['message']
-    response = process_message(message)
-    return jsonify({'response': response})
 
-@app.route('/')
+@app.route('/', methods=['GET'] )
 def home():
-	return "Hello! this is the main page <h1>HELLO</h1> "
+    return render_template("index.html")
+
+
+@app.route('/chat', methods=['POST'] )
+def chat():
+    # message = request.json['message'] 
+    message=request.form['message']
+    response = process_message(message)
+    return render_template("index.html", result=response)
 
 
 def process_message(message):
@@ -18,12 +23,10 @@ def process_message(message):
     # You can use any NLP or machine learning libraries, such as spaCy, NLTK, or TensorFlow
     # For simplicity, let's just echo the user's message
     #  as the response
-    
+    botmessage = message + "hello ooooo"
+    print(botmessage)
+    return botmessage
 
-
-
-
-    print("Request recieved!!")
 
 
 if __name__ == '__main__':
