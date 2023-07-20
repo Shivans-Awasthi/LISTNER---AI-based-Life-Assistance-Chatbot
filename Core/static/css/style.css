@@ -139,9 +139,9 @@
         align-items: center;
         align-self: center;
         justify-content: center;
-        /* overflow: hidden; */
         color: #455A64;
         background-color: #7E57C2;
+        /* background-image: url("background.jpg"); */
         font-family: var(--fontFamily);
         font-size: var(--fontSizeMd);
         line-height: var(--lineHeightMd);
