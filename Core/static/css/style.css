@@ -148,13 +148,13 @@
       }
 
       textarea {
-        height:auto;
-        max-width:1000px;
+        height:400;
+        /* max-width:1000px; */
         color:#999;
         font-weight:400;
         font-size:30px;
         font-family:'Ubuntu', Helvetica, Arial, sans-serif;
-        width: 1000px;;
+        width: 1800;
         background:#fff;
         border-radius:3px;
         line-height:2em;
