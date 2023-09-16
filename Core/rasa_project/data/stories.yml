@@ -1,0 +1,81 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: form send SMS
+  steps:
+  - intent: send_sms
+  - action: sms_details_form
+  - active_loop: sms_details_form
+  - slot_was_set:
+    - requested_slot: mobile_number
+  - intent: goodbye
+  - slot_was_set:
+    - mobile_number: '+919004504615'
+  - action: sms_details_form
+  - slot_was_set:
+    - requested_slot: message
+  - intent: bot_challenge
+  - slot_was_set:
+    - message: Hi am a chatbot
+  - action: sms_details_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # - action: utter_slot_values
+  - action: action_submit
+
+
+
+
+# - story: interactive_story_2
+#   steps:
+#   - intent: send_sms
+#   - action: sms_details_form
+#   - active_loop: sms_details_form
+#   - slot_was_set:
+#     - requested_slot: mobile_number
+#   - intent: stop
+#   - action: sms_details_form
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   - action: utter_happy
+
+- story: interactive_story_1
+  steps:
+  - slot_was_set:
+    - requested_slot: mobile_number
+  - intent: stop
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_happy

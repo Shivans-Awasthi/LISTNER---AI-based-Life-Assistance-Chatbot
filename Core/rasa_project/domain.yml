@@ -1,0 +1,101 @@
+version: '3.1'
+
+intents:
+- affirm
+- bot_challenge
+- deny
+- goodbye
+- greet
+- mood_great
+- mood_unhappy
+- send_sms
+- stop
+- locationData
+
+entities:
+  - Latitude
+  - Longitude
+
+
+
+slots:
+  mobile_number:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: sms_details_form
+        requested_slot: mobile_number
+  message:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: sms_details_form
+        requested_slot: message
+
+  Latitude:
+     type: text
+     mappings:
+     - type: from_entity
+       entity: Latitude 
+
+  Longitude:
+     type: text
+     mappings:
+     - type: from_entity
+       entity: Longitude
+
+responses:
+  utter_greet:
+  - text: Hey! How are you?
+  - text: Hello, How can I help you?
+  - text: Hello, How can I assist you?
+  - text: Hi, I am LISTNER the chatbot, How can I assist you?
+  - text: Hi, I am LISTNER the chatbot, How can I help you?
+  - text: Hi, I am here to help you
+  - text: Hi, I am here to assist you
+  - text: Hi, I am here to assist you, ask me anything
+  utter_cheer_up:
+  - text: 'Here is something to cheer you up, Just Click the link:'
+    image: https://i.imgur.com/nGF1K8f.jpg
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  - text: Happy to be of some help
+  - text: Nice, carry on!
+  - text: Happy to help.
+  utter_goodbye:
+  - text: Bye
+  - text: Bye, I am always here for you
+  - text: Bye, But don't forget me
+  - text: Goodbye, hope will meet again
+  - text: Bye, Let me know when you need me
+  - text: Nice talking to you, Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_ask_mobile_number:
+  - text: Tell me the mobile number, whom to send message.
+  - text: Whom to send the message please proide their mobile number.
+  utter_ask_message:
+  - text: What should I say?
+  - text: Please provide the message you want to send.
+  utter_confirm:
+  - text: 'Should I send the message, Please confirm:'
+  utter_slot_values:
+  - text: I will send "{message}" to the number {mobile_number}.
+actions:
+- utter_happy
+- utter_slot_values
+- action_submit
+forms:
+  sms_details_form:
+    required_slots:
+    - mobile_number
+    - message
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
