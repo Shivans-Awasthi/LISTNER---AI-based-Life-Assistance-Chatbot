@@ -23,7 +23,7 @@ def process_message(message):
     # You can use any NLP or machine learning libraries, such as spaCy, NLTK, or TensorFlow
     # For simplicity, let's just echo the user's message
     #  as the response
-    token = 'ZAiiurgYOr0_6EtTusLvjWlAuDjqs8gD3Susel3iz1Em0jDXf-OvJIcTIoTOf2KhD-k_xQ.'
+    token = 'Your token'
     input_text = request.form['message']
     bard = Bard(token=token)
     botmessage = bard.get_answer(input_text)['content']
